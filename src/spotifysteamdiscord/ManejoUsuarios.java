@@ -126,5 +126,29 @@ public class ManejoUsuarios {
         }
         return false;
     }
+    
+public boolean reactivarUsuario(String username, String password) throws IOException {
+    users.seek(0);
+
+    while (users.getFilePointer() < users.length()) {
+        String tempuser = users.readUTF();
+        String temppassword = users.readUTF();
+        boolean estado = users.readBoolean();
+
+        if (tempuser.equals(username) && temppassword.equals(password)) {
+            if (!estado) {
+                long posicionActual = users.getFilePointer();
+                users.seek(posicionActual - 1);
+                users.writeBoolean(true);
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    return false;
+}
+
+
 
 }

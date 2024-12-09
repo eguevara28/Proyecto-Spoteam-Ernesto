@@ -101,6 +101,13 @@ public class MenuInicial extends JFrame {
                 String username=campouser.getText();
                 String password=campocontra.getText();
                 Users u=new Users(username, password);
+                if(mu.reactivarUsuario(username, password)){
+                    JOptionPane.showMessageDialog(null, "Cuenta Reactivada");
+                    mu.loggear(u);
+                    dispose();
+                    MenuAplicacion ma=new MenuAplicacion();
+                    ma.setVisible(true);
+                }else{
                 if(mu.iniciarSesion(u)){
                     JOptionPane.showMessageDialog(null, "Se inicio sesion correctamente");
                     mu.loggear(u);
@@ -113,6 +120,7 @@ public class MenuInicial extends JFrame {
                     JOptionPane.showMessageDialog(null, "No existe esta cuenta");
                     campouser.setText("");
                     campocontra.setText("");
+                }
                 }
                 }catch(Exception er){
                     JOptionPane.showMessageDialog(null, "Error encontrado: "+er.getMessage());

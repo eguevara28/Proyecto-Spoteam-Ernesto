@@ -50,6 +50,10 @@ public class MiPerfil extends JFrame {
                     if (resultado) {
                         JOptionPane.showMessageDialog(null, "Cuenta desactivada exitosamente.");
                         labelEstado.setText("Estado: Desactivado");
+                        ManejoUsuarios.esAdmin=false;
+                        dispose();
+                        MenuInicial mi=new MenuInicial();
+                        mi.setVisible(true);
                     } else {
                         JOptionPane.showMessageDialog(null, "No se encontró el usuario.");
                     }

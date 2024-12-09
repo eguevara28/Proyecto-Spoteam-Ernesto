@@ -147,6 +147,7 @@ public class MenuAplicacion extends JFrame {
                 MiPerfil cm;
                 cm = new MiPerfil();
                 cm.setVisible(true);
+                MenuAplicacion.this.dispose();
             }
         });
 
@@ -163,6 +164,7 @@ public class MenuAplicacion extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 mu.desloggear();
+                ManejoUsuarios.esAdmin=false;
                 MenuAplicacion.this.dispose();
                 MenuInicial mi = new MenuInicial();
                 mi.setVisible(true);
